@@ -1,0 +1,135 @@
+﻿@model LastDash.Models.Post
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<h2>Edit Post</h2>
+
+<form asp-action="Edit" method="post" enctype="multipart/form-data" class="post-edit-form">
+    <input type="hidden" asp-for="Id" />
+
+    <div class="form-group">
+        <label asp-for="Title" class="form-label"></label>
+        <input asp-for="Title" class="form-input" placeholder="Enter post title" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Content" class="form-label"></label>
+        <textarea asp-for="Content" class="form-textarea" placeholder="Write your post content here..."></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label class="form-label">Current Image</label>
+        <div class="current-image-container">
+            <img src="@Model.ImagePath" alt="Current post image" class="current-image" />
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Image" class="form-label"></label>
+        <input type="file" asp-for="Image" class="form-file" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="Category" class="form-label"></label>
+        <select asp-for="Category" class="form-select" required>
+            <option value="">Select a category</option>
+            <option value="News">News</option>
+            <option value="Politics">Politics</option>
+            <option value="Opinion">Opinion</option>
+            <option value="Sport">Sport</option>
+            <option value="Entertainment">Entertainment</option>
+        </select>
+        <span asp-validation-for="Category" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save</button>
+</form>
+
+
+<style>
+    .current-image-container {
+        margin-top: 10px;
+        margin-bottom: 15px;
+    }
+
+    .current-image {
+        max-width: 200px; /* Adjust the size as needed */
+        height: auto;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+    }
+    .form-title {
+        font-size: 1.8em;
+        font-weight: bold;
+        color: #333;
+        margin-bottom: 20px;
+    }
+
+    .post-edit-form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f8f9fa;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+        color: #333;
+    }
+
+    .form-input, .form-textarea, .form-file, .form-select {
+        width: 100%;
+        padding: 10px;
+        font-size: 1em;
+        border: 1px solid #ced4da;
+        border-radius: 5px;
+        background-color: #fff;
+        transition: border-color 0.2s ease;
+    }
+
+        .form-input:focus, .form-textarea:focus, .form-file:focus, .form-select:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+    .form-textarea {
+        resize: vertical;
+    }
+
+    .btn {
+        padding: 10px 15px;
+        font-size: 1em;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-top: 10px;
+        color: #fff;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+    }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+    .text-danger {
+        font-size: 0.875em;
+        color: #dc3545;
+    }
+</style>

@@ -1,0 +1,77 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"] - LastDash Admin</title>
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/LastDash.styles.css" asp-append-version="true" />
+</head>
+<style>
+    /* Sidebar styles */
+    .sidebar {
+        width: 250px;
+        background-color: #343a40;
+        color: white;
+        padding: 20px;
+        height: 100vh;
+        position: fixed; /* Fixed position for sidebar */
+    }
+
+        .sidebar h2 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+        }
+
+        .sidebar a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 4px;
+            transition: background 0.3s;
+        }
+
+            .sidebar a:hover {
+                background-color: #495057;
+            }
+
+    /* Main content styles */
+    .main-content {
+        margin-left: 250px; /* Leave space for sidebar */
+        padding: 20px;
+    }
+</style>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <!-- Admin Navbar content -->
+        </nav>
+
+        <!-- Sidebar for admin -->
+        <div class="sidebar">
+            <h2>Admin Dashboard</h2>
+            <ul>
+                <li><a asp-area="" asp-controller="Posts" asp-action="Index">View Posts</a></li>
+                <li><a asp-area="" asp-controller="Posts" asp-action="Create">Create Post</a></li>
+                <li><a asp-area="" asp-controller="Posts" asp-action="Comments">View Comments</a></li>
+                <li><a asp-area="" asp-controller="Posts" asp-action="Contact">View Contacts</a></li>
+                <li><a asp-area="" asp-controller="Home" asp-action="Index">User Interface</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <div class="main-content">
+        <div class="container">
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+    </div>
+
+  
+
+    @RenderSection("Scripts", required: false) <!-- Add this line -->
+</body>
+</html>

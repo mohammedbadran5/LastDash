@@ -1,0 +1,45 @@
+﻿@model IEnumerable<LastDash.Models.UserComments>
+@{
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Comments</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Post ID</th> <!-- New column for Post ID -->
+            <th>Post Title</th>
+            <th>Category</th> <!-- New column for Category -->
+            <th>Content</th>
+            <th>Written Date</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var comments in Model)
+        {
+            <tr>
+                <td>@comments.PostId</td> <!-- Display PostId -->
+                <td>@comments.Post?.Title</td> <!-- Display the post title, handle null with ? -->
+                <td>@comments.Post?.Category</td> <!-- Display the post category, handle null with ? -->
+                <td>@comments.Content</td>
+                <td>@comments.WrittenDate</td>
+                <td>
+                    <a asp-action="EditComment" asp-route-id="@comments.Id" class="btn btn-primary">Edit</a>
+                    <form asp-action="DeleteComment" asp-route-id="@comments.Id" method="post" style="display:inline;" onsubmit="return confirm('Are you sure you want to delete this comment?');">
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<style>
+    .post-image {
+        width: 100px; /* Fixed width for images */
+        height: auto; /* Maintain aspect ratio */
+        border-radius: 5px; /* Optional: Rounded corners */
+    }
+</style>

@@ -1,0 +1,93 @@
+﻿@model LastDash.Models.UserComments
+
+@{
+    ViewData["Title"] = "Edit Comment";
+    Layout = "~/Views/Shared/AdminLayout.cshtml"; // Use your shared layout
+}
+<h2 class="form-title">Edit Comment</h2>
+
+<form asp-action="EditComment" method="post" class="edit-comment-form">
+    <input type="hidden" asp-for="PostId" /> <!-- Hidden field for PostId -->
+
+    <div class="form-group">
+        <label asp-for="Content" class="form-label"></label>
+        <textarea asp-for="Content" class="form-control" rows="5"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span> <!-- Validation message -->
+    </div>
+
+    <button type="submit" class="btn btn-primary">Save Changes</button>
+    <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+</form>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    } // Include validation scripts
+}
+
+
+<style>
+    .form-title {
+        font-size: 1.5em;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #333;
+    }
+
+    .edit-comment-form {
+        max-width: 600px;
+        margin: 0 auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+    }
+
+    .form-group {
+        margin-bottom: 15px;
+    }
+
+    .form-label {
+        display: block;
+        margin-bottom: 5px;
+        font-weight: bold;
+    }
+
+    .form-control {
+        width: 100%;
+        padding: 10px;
+        font-size: 1em;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }
+
+    .btn {
+        padding: 8px 15px;
+        font-size: 1em;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        margin-right: 10px;
+    }
+
+    .btn-primary {
+        background-color: #007bff;
+        color: white;
+    }
+
+    .btn-secondary {
+        background-color: #6c757d;
+        color: white;
+        text-decoration: none;
+    }
+
+        .btn-primary:hover, .btn-secondary:hover {
+            opacity: 0.9;
+        }
+
+    .text-danger {
+        font-size: 0.875em;
+        color: #dc3545;
+    }
+</style>

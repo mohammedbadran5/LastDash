@@ -1,0 +1,58 @@
+﻿@model IEnumerable<dynamic>
+
+<h2>Posts by Category</h2>
+
+<div class="category-container">
+    @foreach (var group in Model)
+    {
+        <div class="category-section">
+            <h3>@group.Category</h3>
+            <div class="posts">
+                @foreach (var post in group.Posts)
+                {
+                    <div class="post-card">
+                        <h4>@post.Title</h4>
+                        <img src="@post.ImagePath" alt="@post.Title" class="post-image" />
+                        <p>@post.Content</p>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    .category-container {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .category-section {
+        border: 1px solid #ddd;
+        padding: 15px;
+        border-radius: 5px;
+        background-color: #f9f9f9;
+    }
+
+    .posts {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+    }
+
+    .post-card {
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        padding: 10px;
+        width: 30%; /* Adjust the width as needed */
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        background-color: white;
+    }
+
+    .post-image {
+        width: 100%; /* Full width for images */
+        height: auto; /* Maintain aspect ratio */
+        border-radius: 5px; /* Optional: Rounded corners */
+    }
+</style>

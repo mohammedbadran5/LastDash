@@ -1,0 +1,26 @@
+﻿@model IEnumerable<LastDash.Models.UserComments>
+
+<h2>User Comments</h2>
+@if (Model != null && Model.Any())
+{
+    <table class="table">
+        <thead>
+         
+        </thead>
+        <tbody>
+            @foreach (var comment in Model)
+            {
+                <tr>
+                    <td>@comment.Id</td>
+                    <td>@comment.Content</td>
+                    <td>@comment.WrittenDate</td>
+                    <td>@comment.PostId</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <p>No comments available.</p>
+}
